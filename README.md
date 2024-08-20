@@ -129,5 +129,5 @@ The API gateway can use the company_id from the JWT to direct requests to the co
 
 ### Company Isolation:
 
-Ensure that every API request includes the company_id as part of the query parameters or in the JWT.
-Filter database queries based on the company_id to ensure data isolation.
+- Ensure that every API request includes the company_id as part of the query parameters or in the JWT.
+- Filter database queries based on the company_id to ensure data isolation.
