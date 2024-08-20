@@ -141,3 +141,13 @@ app.get('/templates', authorize(['user', 'admin']), async (req: Request, res: Re
 });
 
 ```
+### Multi-Tenancy Database Strategy:
+
+- Single Database, Shared Schema: All companies share the same database, but queries are scoped by company_id.
+- Separate Databases per Company: Each company has its own database, and the connection is dynamically selected based on the company_id.
+
+## Frontend Integration
+### Role-Based UI:
+
+- Use React Context or Redux to manage the state of the authenticated user, including their role and company_id.
+- Conditionally render UI components based on the user's role and permissions.
