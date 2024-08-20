@@ -164,3 +164,7 @@ const UserDashboard = () => {
 
 
 ```
+## API Calls with Company Context:
+
+- Ensure all API calls from the frontend include the JWT token in the authorization header.
+- Extract company_id from the token and append it to API requests if needed.
