@@ -58,3 +58,60 @@ Companies to Users (one company can have many users).
 Companies to Templates (one company can have many templates).
 Companies to APIs (one company can have many APIs).
 Roles to Users (one role can be assigned to many users)
+
+## Authentication
+### JWT Authentication:
+
+Upon login, generate a JSON Web Token (JWT) that encodes the user_id, company_id, and role_id.
+Store the JWT in the user's session or local storage.
+
+#### Password Hashing:
+
+Use bcrypt or Argon2 for hashing passwords before storing them in the database.
+
+#### Login Flow:
+
+- Verify the user's credentials.
+- Check if the user is associated with the correct company_id.
+- Generate a JWT with the user_id, company_id, and role_id.
+- Return the JWT to the client.
+
+## Authorization
+### Middleware for RBAC:
+Implement a middleware that extracts the role_id and company_id from the JWT.
+Use the role_id to check if the user has the necessary permissions for the requested operation.
+Use the company_id to ensure the user can only access data belonging to their company.
+
+```
+import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
+import { getRepository } from 'typeorm';
+import { Role } from './entities/Role';
+
+export const authorize = (permissions: string[]) => {
+    return async (req: Request, res: Response, next: NextFunction) => {
+        const token = req.headers['authorization'];
+        if (!token) return res.status(401).json({ message: 'Unauthorized' });
+
+        try {
+            const decoded: any = jwt.verify(token, process.env.JWT_SECRET);
+            const roleRepo = getRepository(Role);
+            const userRole = await roleRepo.findOne({ where: { id: decoded.role_id } });
+
+            if (!userRole || !permissions.includes(userRole.name)) {
+                return res.status(403).json({ message: 'Forbidden' });
+            }
+
+            req.user = decoded;
+            next();
+        } catch (err) {
+            return res.status(401).json({ message: 'Unauthorized' });
+        }
+    };
+};
+
+
+```
+### Role-Based Permissions:
+Define roles with specific permissions, e.g., admin can create/edit/delete, while users can only view.
+Store these permissions in the Roles table and enforce them via middleware.
