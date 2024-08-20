@@ -11,3 +11,5 @@ The architecture should cover:
 -  Isolation using APIs
 - Frontend Integration
 -  Best Practices and Security.
+
+Below is a comprehensive guide covering database design, authentication, authorization, integration of company data isolation, frontend integration, best practices, and security.
