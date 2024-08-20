@@ -124,8 +124,8 @@ Store these permissions in the Roles table and enforce them via middleware.
 
 ### API Gateway:
 
-Implement an API gateway to manage incoming requests and route them to the appropriate backend services.
-The API gateway can use the company_id from the JWT to direct requests to the correct data source.
+- Implement an API gateway to manage incoming requests and route them to the appropriate backend services.
+- The API gateway can use the company_id from the JWT to direct requests to the correct data source.
 
 ### Company Isolation:
 
