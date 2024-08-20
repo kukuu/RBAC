@@ -116,8 +116,8 @@ export const authorize = (permissions: string[]) => {
 
 ```
 ### Role-Based Permissions:
-Define roles with specific permissions, e.g., admin can create/edit/delete, while users can only view.
-Store these permissions in the Roles table and enforce them via middleware.
+- Define roles with specific permissions, e.g., admin can create/edit/delete, while users can only view.
+- Store these permissions in the Roles table and enforce them via middleware.
 
 
 ## Integration of Company Data Isolation using APIs
