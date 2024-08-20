@@ -151,3 +151,16 @@ app.get('/templates', authorize(['user', 'admin']), async (req: Request, res: Re
 
 - Use React Context or Redux to manage the state of the authenticated user, including their role and company_id.
 - Conditionally render UI components based on the user's role and permissions.
+
+```
+const UserDashboard = () => {
+    const { user } = useContext(AuthContext);
+    
+    if (user.role === 'admin') {
+        return <AdminDashboard />;
+    }
+    return <UserDashboard />;
+};
+
+
+```
