@@ -1,4 +1,4 @@
-# Using Role Based Aceesss Controls
+# Using Role Based Aceesss Control
 
 ## Task:
 How to implement a Role Based Access Control in NodeJS, TypeScript and REACT for 3 different stakeholder -  using similar AI templates and API engine for Frontend and back end. None of the stakeholders must see data sources of one another. 
