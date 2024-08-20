@@ -131,3 +131,13 @@ export const authorize = (permissions: string[]) => {
 
 - Ensure that every API request includes the company_id as part of the query parameters or in the JWT.
 - Filter database queries based on the company_id to ensure data isolation.
+
+```
+// Example of fetching templates for a specific company
+app.get('/templates', authorize(['user', 'admin']), async (req: Request, res: Response) => {
+    const companyId = req.user.company_id;
+    const templates = await templateRepo.find({ where: { company_id: companyId } });
+    res.json(templates);
+});
+
+```
