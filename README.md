@@ -82,9 +82,9 @@ Use bcrypt or Argon2 for hashing passwords before storing them in the database.
 
 ## Authorization
 ### Middleware for RBAC:
-Implement a middleware that extracts the role_id and company_id from the JWT.
-Use the role_id to check if the user has the necessary permissions for the requested operation.
-Use the company_id to ensure the user can only access data belonging to their company.
+- Implement a middleware that extracts the role_id and company_id from the JWT.
+- Use the role_id to check if the user has the necessary permissions for the requested operation.
+- Use the company_id to ensure the user can only access data belonging to their company.
 
 ```
 import { Request, Response, NextFunction } from 'express';
