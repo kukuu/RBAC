@@ -14,7 +14,7 @@ The architecture should cover:
 
 Below is a comprehensive guide covering database design, authentication, authorization, integration of company data isolation, frontend integration, best practices, and security.
 
-1. Database Design
+## Database Design
 a. Tables/Collections Design:
 Users Table:
 
