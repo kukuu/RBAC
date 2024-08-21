@@ -13,10 +13,6 @@ The architecture should cover:
 
 Below are comprehensive steps covering database design, authentication, authorization, integration of company data isolation, frontend integration, best practices, and security.
 
-
-Implementing Role-Based Access Control (RBAC) in a Node.js application using TypeScript and React for three different companies with shared AI templates and API engines, while ensuring strict data isolation, is a complex yet achievable task. Below is a comprehensive guide covering database design, authentication, authorization, integration of company data isolation, frontend integration, best practices, and security.
-
-
 ## Database Design
 ### a. Tables/Collections Design:
 
