@@ -1,7 +1,6 @@
 # Using Role Based Aceesss Control
 
-## Task:
-How to implement a Role Based Access Control in NodeJS, TypeScript and REACT for 3 different stakeholder -  using similar AI templates and API engine for Frontend and back end. None of the stakeholders must see data sources of one another. 
+Implementing RBAC in a multi-tenant system where data isolation between companies is crucial requires careful planning and execution. This guide provides a comprehensive approach to achieving this in a Node.js, TypeScript, and React environment, ensuring that each company’s data remains isolated, secure, and accessible only to authorized users. The combination of a well-designed database, strong authentication and authorization mechanisms, and secure API integrations forms the backbone of a reliable and scalable system.
 
 The architecture should cover:
 - Database Design
