@@ -50,3 +50,17 @@ Here’s a high-level structure of the project:
       └── index.html
 
 ```
+## Backend Implementation
+
+a. Install Required Dependencies
+First, let's set up the project and install the necessary dependencies:
+
+```
+mkdir backend
+cd backend
+npm init -y
+
+- npm install express pg typeorm reflect-metadata bcryptjs jsonwebtoken dotenv
+- npm install -D typescript ts-node-dev @types/node @types/express @types/jsonwebtoken @types/bcryptjs jest ts-jest @types/jest supertest @types/supertest
+
+```
