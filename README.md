@@ -159,7 +159,25 @@ const UserDashboard = () => {
 
 
 ```
-## API Calls with Company Context:
+### API Calls with Company Context:
 
 - Ensure all API calls from the frontend include the JWT token in the authorization header.
 - Extract company_id from the token and append it to API requests if needed.
+
+
+## Best Practices
+### Environment Variables:
+
+- Store sensitive configurations like database connections and JWT secrets in environment variables.
+
+### Logging and Monitoring:
+
+- Implement logging (using libraries like Winston) to track access and errors, ensuring compliance with security policies.
+- Monitor the system's performance and security using tools like Prometheus, Grafana, or New Relic.
+
+### Testing:
+
+- Write unit and integration tests for all critical paths, including authentication, authorization, and data isolation.
+CI/CD Pipeline:
+
+- Set up a continuous integration and delivery pipeline using tools like Jenkins, CircleCI, or GitHub Actions to automate testing and deployment.
