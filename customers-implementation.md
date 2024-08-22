@@ -264,3 +264,6 @@ export const authorize = (roles: string[]) => {
 };
 
 ```
+
+- Auth Controller
+
