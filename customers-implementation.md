@@ -64,3 +64,35 @@ npm init -y
 - npm install -D typescript ts-node-dev @types/node @types/express @types/jsonwebtoken @types/bcryptjs jest ts-jest @types/jest supertest @types/supertest
 
 ```
+b. Create Database Models
+
+- User Model
+
+```
+// src/models/user.ts
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Company } from './company';
+import { Role } from './role';
+
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  username: string;
+
+  @Column()
+  email: string;
+
+  @Column()
+  password: string;
+
+  @ManyToOne(() => Company, company => company.users)
+  company: Company;
+
+  @ManyToOne(() => Role, role => role.users)
+  role: Role;
+}
+
+```
