@@ -181,3 +181,18 @@ const UserDashboard = () => {
 CI/CD Pipeline:
 
 - Set up a continuous integration and delivery pipeline using tools like Jenkins, CircleCI, or GitHub Actions to automate testing and deployment.
+
+## Security
+
+### Data Encryption:
+
+- Encrypt sensitive data at rest and in transit using TLS for data in transit and AES-256 for data at rest.
+Input Validation:
+
+- Validate all input data on both the client and server sides to prevent SQL injection, XSS, and other common attacks.
+Security Headers:
+
+- Use security headers like Content-Security-Policy, X-Content-Type-Options, and X-Frame-Options to protect against various web vulnerabilities.
+Regular Audits:
+
+- Conduct regular security audits and penetration testing to identify and mitigate potential vulnerabilities.
