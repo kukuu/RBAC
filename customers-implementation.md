@@ -386,3 +386,93 @@ npm install axios react-router-dom @types/react-router-dom
 
 ```
 
+b. Auth Context
+- Auth Context Setup
+
+```
+// src/context/AuthContext.tsx
+import React, { createContext, useState, useEffect } from 'react';
+import axios from 'axios';
+
+interface AuthContextType {
+  user: any;
+  login: (email: string, password: string) => Promise<void>;
+  logout: () => void;
+}
+
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+export const AuthProvider: React.FC = ({ children }) => {
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      setUser(JSON.parse(atob(token.split('.')[1])));
+    }
+  }, []);
+
+  const login = async (email: string, password: string) => {
+    const response = await axios.post('/api/auth/login', { email, password });
+    const { token } = response.data;
+    localStorage.setItem('token', token);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    setUser(JSON.parse(atob(token.split('.')[1])));
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    delete axios.defaults.headers.common['Authorization'];
+    setUser(null);
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+```
+
+- Auth Component
+
+```
+// src/components/AuthComponent.tsx
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../context/AuthContext';
+
+const AuthComponent: React.FC = () => {
+  const { login } = useContext(AuthContext)!;
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await login(email, password);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+      />
+      <button type="submit">Login</button>
+    </form>
+  );
+};
+
+export default AuthComponent;
+
+
+```
