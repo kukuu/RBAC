@@ -378,3 +378,11 @@ describe('Auth API', () => {
 a. Install Required Dependencies
 
 Set up the React project:
+
+```
+npx create-react-app frontend --template typescript
+cd frontend
+npm install axios react-router-dom @types/react-router-dom
+
+```
+
