@@ -337,3 +337,44 @@ router.get('/', authorize(['user', 'admin']), getTemplates);
 export default router;
 
 ```
+f. Unit Tests
+
+- Testing Setup
+  
+Install testing libraries:
+
+```
+npm install -D jest supertest @types/supertest
+
+```
+
+- Auth Test
+
+```
+// src/tests/auth.test.ts
+import request from 'supertest';
+import { createConnection } from 'typeorm';
+import { User } from '../models/user';
+import app from '../app';
+
+describe('Auth API', () => {
+  beforeAll(async () => {
+    await createConnection();
+  });
+
+  it('should login user', async () => {
+    const response = await request(app).post('/api/auth/login').send({
+      email: 'test@aa.com',
+      password: 'password',
+    });
+    expect(response.status).toBe(200);
+    expect(response.body.token).toBeDefined();
+  });
+});
+
+```
+
+## Frontend Implementation
+a. Install Required Dependencies
+
+Set up the React project:
