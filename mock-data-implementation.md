@@ -126,3 +126,6 @@ export const fetchTemplates = async () => {
 };
 
 ``` 
+b. Update Dashboard Component
+Update the Dashboard component to display the custom JSON data.
+
