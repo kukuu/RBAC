@@ -525,3 +525,20 @@ export default Dashboard;
 
 
 ## Running the Application
+
+- Start the backend:
+
+```
+npm run dev
+
+```
+
+- Start the frontend:
+
+```
+npm start
+
+```
+## Test the application:
+1. Use Postman or any other API testing tool to interact with the backend.
+2. Login via the frontend and interact with the dashboard.
