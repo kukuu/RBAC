@@ -522,3 +522,6 @@ export default Dashboard;
 3. Implement CORS policies to control cross-origin requests.
 4. Secure JWT tokens and ensure they are stored securely.
 5. Write unit and integration tests to cover all critical parts of the application.
+
+
+## Running the Application
