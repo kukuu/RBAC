@@ -129,3 +129,45 @@ export const fetchTemplates = async () => {
 b. Update Dashboard Component
 Update the Dashboard component to display the custom JSON data.
 
+```
+// src/components/Dashboard.tsx
+import React, { useContext, useEffect, useState } from 'react';
+import { fetchTemplates } from '../services/templateService';
+import { AuthContext } from '../context/AuthContext';
+
+const Dashboard: React.FC = () => {
+  const { user } = useContext(AuthContext)!;
+  const [templates, setTemplates] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchTemplates();
+      setTemplates(data);
+    };
+
+    fetchData();
+  }, []);
+
+  if (!user) return <div>Loading...</div>;
+
+  return (
+    <div>
+      <h1>Welcome, {user.username}</h1>
+      <h2>Your Templates</h2>
+      <ul>
+        {templates.map((template, index) => (
+          <li key={index}>
+            <h3>{template.name}</h3>
+            <pre>{JSON.stringify(template.data, null, 2)}</pre>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Dashboard;
+
+
+
+```
