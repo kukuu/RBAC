@@ -476,3 +476,42 @@ export default AuthComponent;
 
 
 ```
+- Dashboard Component
+
+```
+// src/components/Dashboard.tsx
+import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
+
+const Dashboard: React.FC = () => {
+  const { user } = useContext(AuthContext)!;
+  const [templates, setTemplates] = useState([]);
+
+  useEffect(() => {
+    const fetchTemplates = async () => {
+      const response = await axios.get('/api/templates');
+      setTemplates(response.data);
+    };
+
+    fetchTemplates();
+  }, []);
+
+  if (!user) return <div>Loading...</div>;
+
+  return (
+    <div>
+      <h1>Welcome, {user.username}</h1>
+      <h2>Your Templates</h2>
+      <ul>
+        {templates.map((template: any) => (
+          <li key={template.id}>{template.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Dashboard;
+
+```
