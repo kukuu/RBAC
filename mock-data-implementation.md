@@ -78,5 +78,36 @@ createConnection().then(async connection => {
     process.exit(0);
 }).catch(error => console.log(error));
 
+```
+
+Run the seeding script after implementing it
+
+```
+ts-node src/seed.ts
+
+```
+
+c. Update the Template Controller
+Update the getTemplates controller to return the custom JSON data for the templates.
+
+```
+// src/controllers/templateController.ts
+import { Request, Response } from 'express';
+import { getRepository } from 'typeorm';
+import { Template } from '../models/template';
+
+export const getTemplates = async (req: Request, res: Response) => {
+  const templateRepo = getRepository(Template);
+  const templates = await templateRepo.find({ where: { company: req.user.company_id } });
+  
+  // Map to return only name and data
+  const response = templates.map(template => ({
+    name: template.name,
+    data: template.data,
+  }));
+
+  res.json(response);
+
+
 
 ```
