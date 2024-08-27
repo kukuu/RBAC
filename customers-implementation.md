@@ -515,3 +515,10 @@ const Dashboard: React.FC = () => {
 export default Dashboard;
 
 ```
+## Best Practices and Security
+-- Use environment variables to store sensitive information.
+
+Sanitize and validate input to protect against SQL injection and other vulnerabilities.
+Implement CORS policies to control cross-origin requests.
+Secure JWT tokens and ensure they are stored securely.
+Write unit and integration tests to cover all critical parts of the application.
