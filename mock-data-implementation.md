@@ -108,6 +108,21 @@ export const getTemplates = async (req: Request, res: Response) => {
 
   res.json(response);
 
+```
 
+## 2. Frontend Updates
+We'll now update the frontend to consume and display the custom JSON data from the backend.
+
+a. Template Service
+Create a service to fetch the templates data from the API.
 
 ```
+// src/services/templateService.ts
+import axios from 'axios';
+
+export const fetchTemplates = async () => {
+  const response = await axios.get('/api/templates');
+  return response.data;
+};
+
+``` 
