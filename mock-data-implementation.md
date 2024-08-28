@@ -168,6 +168,10 @@ const Dashboard: React.FC = () => {
 
 export default Dashboard;
 
-
-
 ```
+
+## Running the Updated Application
+Start the backend:
+
+Ensure your PostgreSQL server is running.
+Start the backend with the following command:
