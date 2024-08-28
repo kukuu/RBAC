@@ -175,3 +175,8 @@ Start the backend:
 
 Ensure your PostgreSQL server is running.
 Start the backend with the following command:
+
+```
+npm run dev
+
+```
