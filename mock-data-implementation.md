@@ -174,9 +174,28 @@ export default Dashboard;
 Start the backend:
 
 Ensure your PostgreSQL server is running.
-Start the backend with the following command:
+
+- Start the backend with the following command:
 
 ```
 npm run dev
+
+```
+- Seed the database:
+
+If you haven’t already, run the seeding script to populate the database with the custom JSON data:
+
+```
+ts-node src/seed.ts
+
+```
+
+- Start the frontend:
+
+Make sure you have the correct proxy setup in the frontend’s package.json to point to the backend API.
+Start the frontend:
+
+```
+npm start
 
 ```
