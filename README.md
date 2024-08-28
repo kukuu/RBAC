@@ -41,7 +41,7 @@ permissions: JSON array of permissions associated with the role.
 id: Unique identifier.
 name: Name of the template.
 company_id: Foreign key referencing the company that owns the template.
-data: JSON or other appropriate format storing the AI template data.
+data: JSON or other appropriate format storing the AI template data. 
 
 #### APIs Table:
 
