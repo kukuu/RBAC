@@ -8,7 +8,7 @@ To implement the requirements for creating and managing users for the three diff
 - Form Management: Use React hooks to manage form state and integrate with the backend.
 - State Management: Use React Context for authentication state and user data management.Persisting Data: Ensure data persists on reload using state and API integration.
 
-## 1. Database Setup
+##  Database Setup
 First, let's define the PostgreSQL database schema to store user data:
 
 ```
@@ -34,7 +34,30 @@ INSERT INTO users (name, email, company) VALUES
 
 
 ```
+##  Backend API (Node.js/Express)
+Setup Project and Install Dependencies
 
+```
+
+mkdir user-management-app
+cd user-management-app
+npm init -y
+npm install express pg cors body-parser dotenv
+
+```
+Create the following file structure:
+
+```
+user-management-app/
+|-- server/
+|   |-- index.js
+|   |-- db.js
+|   |-- routes/
+|       |-- users.js
+|-- .env
+
+
+```
 ## Summary
 
 The above setup allows for complete user management in a React application, ensuring data persistence and seamless user experience.
