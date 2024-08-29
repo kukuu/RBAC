@@ -56,8 +56,121 @@ user-management-app/
 |       |-- users.js
 |-- .env
 
+```
+
+Database Connection (server/db.js)
 
 ```
+const { Pool } = require('pg');
+require('dotenv').config();
+
+const pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
+});
+
+module.exports = {
+    query: (text, params) => pool.query(text, params),
+};
+
+```
+
+API Endpoints (server/routes/users.js)
+
+```
+const express = require('express');
+const router = express.Router();
+const db = require('../db');
+
+// Get all users
+router.get('/', async (req, res) => {
+    try {
+        const result = await db.query('SELECT * FROM users');
+        res.json(result.rows);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Get user by email (login simulation)
+router.post('/login', async (req, res) => {
+    const { email } = req.body;
+    try {
+        const result = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+        if (result.rows.length > 0) {
+            res.json(result.rows[0]);
+        } else {
+            res.status(401).json({ message: 'User not found' });
+        }
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Update user information
+router.put('/:id', async (req, res) => {
+    const { id } = req.params;
+    const { name, date_of_birth, address, tel, hobby } = req.body;
+    try {
+        const result = await db.query(
+            `UPDATE users SET name = $1, date_of_birth = $2, address = $3, tel = $4, hobby = $5, updated_at = NOW() WHERE id = $6 RETURNING *`,
+            [name, date_of_birth, address, tel, hobby, id]
+        );
+        res.json(result.rows[0]);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Delete user
+router.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        await db.query('DELETE FROM users WHERE id = $1', [id]);
+        res.status(204).send();
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+module.exports = router;
+
+```
+
+Server Setup (server/index.js)
+
+```
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const userRoutes = require('./routes/users');
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+app.use('/api/users', userRoutes);
+
+const PORT = process.env.PORT || 7020;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
+```
+Environment Configuration (.env)
+
+```
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=your_db_name
+
+```
+
 ## Summary
 
 The above setup allows for complete user management in a React application, ensuring data persistence and seamless user experience.
