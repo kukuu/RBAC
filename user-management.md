@@ -314,6 +314,38 @@ const UserProfile = () => {
 export default UserProfile;
 
 ```
+
+Main App Component (client/src/App.js) 
+
+```
+import React, { useContext } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { AuthProvider, AuthContext } from './AuthContext';
+import Login from './components/Login';
+import UserProfile from './components/UserProfile';
+
+const App = () => {
+    const { user } = useContext(AuthContext);
+
+    return (
+        <AuthProvider>
+            <Router>
+                <Switch>
+                    <Route path="/login">
+                        {user ? <Redirect to="/profile" /> : <Login />}
+                    </Route>
+                    <Route path="/profile">
+                        {user ? <UserProfile /> : <Redirect to="/login" />}
+                    </Route>
+                </Switch>
+            </Router>
+        </AuthProvider>
+    );
+};
+
+export default App;
+
+```
 ## Summary
 
 The above setup allows for complete user management in a React application, ensuring data persistence and seamless user experience.
