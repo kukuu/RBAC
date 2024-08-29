@@ -252,7 +252,7 @@ export default Login;
 
 ```
 
-## Create User Profile Component (client/src/components/UserProfile.js)
+Create User Profile Component (client/src/components/UserProfile.js)
 
 ```
 import React, { useContext, useState, useEffect } from 'react';
