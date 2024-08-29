@@ -251,6 +251,69 @@ const Login = () => {
 export default Login;
 
 ```
+
+## Create User Profile Component (client/src/components/UserProfile.js)
+
+```
+import React, { useContext, useState, useEffect } from 'react';
+import { AuthContext } from '../AuthContext';
+
+const UserProfile = () => {
+    const { user } = useContext(AuthContext);
+    const [formData, setFormData] = useState({
+        name: '',
+        date_of_birth: '',
+        address: '',
+        tel: '',
+        hobby: '',
+    });
+
+    useEffect(() => {
+        if (user) {
+            setFormData({
+                name: user.name,
+                date_of_birth: user.date_of_birth || '',
+                address: user.address || '',
+                tel: user.tel || '',
+                hobby: user.hobby || '',
+            });
+        }
+    }, [user]);
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`http://localhost:7020/api/users/${user.id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+            const updatedUser = await response.json();
+            console.log('User updated:', updatedUser);
+        } catch (error) {
+            console.error('Update failed:', error);
+        }
+    };
+
+    return (
+        <form onSubmit={handleUpdate}>
+            <input type="text" name="name" value={formData.name} onChange={handleChange} />
+            <input type="date" name="date_of_birth" value={formData.date_of_birth} onChange={handleChange} />
+            <input type="text" name="address" value={formData.address} onChange={handleChange} />
+            <input type="text" name="tel" value={formData.tel} onChange={handleChange} />
+            <input type="text" name="hobby" value={formData.hobby} onChange={handleChange} />
+            <button type="submit">Update Profile</button>
+        </form>
+    );
+};
+
+export default UserProfile;
+
+```
 ## Summary
 
 The above setup allows for complete user management in a React application, ensuring data persistence and seamless user experience.
