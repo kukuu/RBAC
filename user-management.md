@@ -171,6 +171,54 @@ DB_NAME=your_db_name
 
 ```
 
+
+## Frontend Components (React)
+Dependencies Installation
+
+Inside the project directory:
+
+```
+npx create-react-app client
+cd client
+npm install axios react-router-dom
+
+```
+Create Context for Authentication (client/src/AuthContext.js)
+
+```
+import React, { createContext, useState } from 'react';
+
+const AuthContext = createContext();
+
+const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+
+    const login = async (email) => {
+        try {
+            const response = await fetch(`http://localhost:7020/api/users/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            });
+            const data = await response.json();
+            setUser(data);
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
+    };
+
+    const logout = () => setUser(null);
+
+    return (
+        <AuthContext.Provider value={{ user, login, logout }}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
+
+export { AuthContext, AuthProvider };
+
+```
 ## Summary
 
 The above setup allows for complete user management in a React application, ensuring data persistence and seamless user experience.
