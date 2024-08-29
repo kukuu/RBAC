@@ -1,6 +1,6 @@
 ## User Management
 
-To implement the requirements for creating and managing users for the three companies (AA, BB, and CC) and allowing them to log in, input additional information, and manage their profiles we'll follow a step-by-step approach. This will involve:
+To implement the requirements for creating and managing users for the three different companies (AA, BB, and CC) and allowing them to log in, input additional information, and manage their profiles we'll follow a step-by-step approach. This will involve:
 
 - Database Setup: Define a PostgreSQL database schema to store user information.
 - Backend API: Develop Node.js/Express API endpoints to handle user creation, login, profile updates, and deletions.
