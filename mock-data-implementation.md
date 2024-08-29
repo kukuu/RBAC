@@ -199,3 +199,9 @@ Start the frontend:
 npm start
 
 ```
+## Test the application
+
+- Log in with a user belonging to one of the companies (AA, BB, or CC).
+
+- Navigate to the dashboard to view the custom JSON data associated with that company.
+
