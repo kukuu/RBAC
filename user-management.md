@@ -219,6 +219,38 @@ const AuthProvider = ({ children }) => {
 export { AuthContext, AuthProvider };
 
 ```
+
+Create Login Component (client/src/components/Login.js)
+
+```
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../AuthContext';
+
+const Login = () => {
+    const { login } = useContext(AuthContext);
+    const [email, setEmail] = useState('');
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        login(email);
+    };
+
+    return (
+        <form onSubmit={handleLogin}>
+            <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter email"
+            />
+            <button type="submit">Login</button>
+        </form>
+    );
+};
+
+export default Login;
+
+```
 ## Summary
 
 The above setup allows for complete user management in a React application, ensuring data persistence and seamless user experience.
