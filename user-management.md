@@ -10,7 +10,7 @@ To implement the requirements for creating and managing users for the three diff
 
 ## Summary
 
-The following setup allows for complete user management in a React application, ensuring data persistence and seamless user experience.
+The above setup allows for complete user management in a React application, ensuring data persistence and seamless user experience.
 - Database: PostgreSQL schema for storing user data.
 - Backend: Node.js/Express API for managing CRUD operations.
 - Frontend: React components for login, profile management, and CRUD operations.
