@@ -205,3 +205,8 @@ npm start
 
 - Navigate to the dashboard to view the custom JSON data associated with that company.
 
+- Testing the Application
+To ensure that each company sees only its respective data, you can log in with different users belonging to AA, BB, and CC, and check that the templates displayed match the custom JSON data seeded for each company.
+
+## Conclusion
+This implementation provides a robust setup where each company can have its own isolated set of templates with custom JSON data. The role-based access control (RBAC) system ensures that only users belonging to a particular company can access the data related to their company, maintaining strict data isolation and security.
