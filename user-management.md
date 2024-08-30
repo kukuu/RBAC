@@ -346,6 +346,16 @@ const App = () => {
 export default App;
 
 ```
+
+## Adding Edit and Delete Functionality
+
+To manage editing and deleting user data, the following steps are integrated:
+
+Edit: Already covered by UserProfile component, where user data is updated.
+Delete: Can be managed via a delete button in the UserProfile component.
+Update UserProfile.js to include a delete button:
+
+
 ## Summary
 
 The above setup allows for complete user management in a React application, ensuring data persistence and seamless user experience.
