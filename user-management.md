@@ -375,6 +375,37 @@ const handleDelete = async () => {
 
 ```
 
+## Persisting State on Reload
+To persist state on reload:
+
+Use local storage to store user session data.
+- Update AuthProvider to check local storage on load.
+
+Update AuthProvider:
+
+```
+
+const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(() => {
+        const savedUser = localStorage.getItem('user');
+        return savedUser ? JSON.parse(savedUser) : null;
+    });
+
+    const login = async (email) => {
+        // existing login code
+        localStorage.setItem('user', JSON.stringify(data));
+        setUser(data);
+    };
+
+    const logout = () => {
+        localStorage.removeItem('user');
+        setUser(null);
+    };
+
+    // existing return statement
+};
+
+```
 
 ## Summary
 
