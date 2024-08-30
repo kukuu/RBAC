@@ -351,9 +351,29 @@ export default App;
 
 To manage editing and deleting user data, the following steps are integrated:
 
-Edit: Already covered by UserProfile component, where user data is updated.
-Delete: Can be managed via a delete button in the UserProfile component.
+- Edit: Already covered by UserProfile component, where user data is updated.
+- Delete: Can be managed via a delete button in the UserProfile component.
+
 Update UserProfile.js to include a delete button:
+
+```
+// In UserProfile.js
+const handleDelete = async () => {
+    try {
+        await fetch(`http://localhost:7020/api/users/${user.id}`, {
+            method: 'DELETE',
+        });
+        console.log('User deleted');
+        logout(); // Clear the current user
+    } catch (error) {
+        console.error('Delete failed:', error);
+    }
+};
+
+// In the return statement of UserProfile
+<button onClick={handleDelete}>Delete Account</button>
+
+```
 
 
 ## Summary
