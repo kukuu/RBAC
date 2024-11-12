@@ -1,6 +1,6 @@
 # Using Role Based Aceesss Control
 
-Implementing RBAC in a multi-tenant system where data isolation between companies is crucial requires careful planning and execution. This guide provides a comprehensive approach to achieving this in a Node.js, TypeScript, and React environment, ensuring that each company’s data remains isolated, secure, and accessible only to authorized users. The combination of a well-designed database, strong authentication and authorization mechanisms, and secure API integrations forms the backbone of this reliable and scalable system. 
+Implementing RBAC in a multi-tenant system where data isolation between companies is crucial requires careful planning and execution. This guide provides a comprehensive approach to achieving this in a Node.js, TypeScript, and React environment, ensuring that each company’s data remains isolated, secure, and accessible only to authorized users. The combination of a well-designed database, strong authentication and authorization mechanisms, and secure API integrations forms the backbone of this reliable and scalable system.  
 
 The architecture of this work covers:
 - Database Design
