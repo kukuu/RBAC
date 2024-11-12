@@ -8,7 +8,7 @@ The architecture of this work covers:
 - Authorization
 - Integration of Company Data
 -  Isolation using APIs
-- Frontend Integration
+- Frontend Integration 
 -  Best Practices and Security.
 
 Below are comprehensive steps covering database design, authentication, authorization, integration of company data isolation, frontend integration, best practices, and security.
