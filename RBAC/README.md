@@ -3,6 +3,7 @@ Implementing a full end-to-end Role-Based Access Control (RBAC) system with cust
 
 Project Structure
 Here’s a high-level structure of the project:
+```
 
 /backend
   ├── src
@@ -48,8 +49,11 @@ Here’s a high-level structure of the project:
   ├── public
       └── index.html
 
+```
 Backend Implementation
+
 a. Install Required Dependencies First, let's set up the project and install the necessary dependencies:
+
 
 mkdir backend
 cd backend
